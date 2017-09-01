@@ -1,0 +1,7 @@
+---
+applications:
+- name: recog
+  host: recog
+  memory:  512M
+  services:
+    - recog
