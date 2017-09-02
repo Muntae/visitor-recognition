@@ -51,21 +51,50 @@
 					    </div>
 					    <% } %>
 				  </div>
-				  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+				  <a class="carousel-control-prev" id="prevBtn" href="#carouselExampleControls" role="button" data-slide="prev">
 				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 				    <span class="sr-only">Previous</span>
 				  </a>
-				  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+				  <a class="carousel-control-next" id="nextBtn" href="#carouselExampleControls" role="button" data-slide="next">
 				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 				    <span class="sr-only">Next</span>
 				  </a>
 				</div>
 				<!-- image view end -->
+				<h3 style="text-align: center; margin-top: 1em;"><span id="slide">1</span> / <%= data_set[index].length %></h3>
 				<footer class="footer">
 					<p>Copyright(C)2017. All rights reserved by PNU Endurance.</p>
 				</footer>
 			</div>
 		</div>
 	</div>
+	<script>
+		var prevBtn = document.getElementById("prevBtn").addEventListener("click", CountMinus);
+		var nextBtn = document.getElementById("nextBtn").addEventListener("click", CountPlus);
+		var slide = document.getElementById("slide").innerHTML;
+		function CountMinus(prevBtn) {
+			
+			if (slide > 1) {
+				slide = --slide;
+				document.getElementById("slide").innerHTML = slide;
+			}
+			else if (slide == 1) {
+				slide = <%= data_set[index].length %>;
+				document.getElementById("slide").innerHTML = slide;
+			}
+		}
+
+		function CountPlus(nextBtn) {
+			// var slide = document.getElementById("slide").innerHTML;
+			if (slide < <%= data_set[index].length %>) {
+				slide = ++slide;
+				document.getElementById("slide").innerHTML = slide;
+			}
+			else if (slide == <%= data_set[index].length %>) {
+				slide = 1;
+				document.getElementById("slide").innerHTML = slide;
+			}
+		}
+	</script>
 </body>
 </html>

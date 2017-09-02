@@ -672,9 +672,9 @@ var Carousel = function ($) {
         this._interval = null;
       }
 
-      if (this._config.interval && !this._isPaused) {
-        this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
-      }
+      // if (this._config.interval && !this._isPaused) {
+      //   this._interval = setInterval((document.visibilityState ? this.nextWhenVisible : this.next).bind(this), this._config.interval);
+      // }
     };
 
     Carousel.prototype.to = function to(index) {
