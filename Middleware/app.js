@@ -15,9 +15,9 @@ var noti_term = 60; // 푸시 알람 간격(초)
 var before_alarm_time;
 var app = express();
 
-var serverKey = 'AAAANg4sIEI:APA91bFWGOtJ4l4r6tPwm3UmIKzRExH8i9tdt8Tm3iWre9UwCe9CNhRBJoM9Ligg4LmOl3mb7x7ws6LIk_4PMVGhoKqzIbRbHIejZ5RVi0WPZlkRmqps4rd-1cwu43OBgs9hQfGVbxPf';
+var serverKey = '[serverKey]';
 
-var dbConnect = MongoClient.connect("mongodb://admin:OEOLSGNYEQELBFJM@sl-us-south-1-portal.4.dblayer.com:18145,sl-us-south-1-portal.5.dblayer.com:18145/admin?ssl=true", function(err, db) {
+var dbConnect = MongoClient.connect("[db_url]", function(err, db) {
   mongodb = db.db("examples");
 });
 
@@ -33,7 +33,7 @@ app.listen(port);
 console.log("Server Start");
 
 const gcs = gcStorage({
-  keyFilename: './recog.json'
+  keyFilename: '[keyFilename.json]'
 });
 
 function leadingZeros(n, digits) {
@@ -70,14 +70,14 @@ var storage = multer.diskStorage({
 });
 var upload = multer({ storage: storage });
 
-var serviceAccount = require("./visitor.json");
+var serviceAccount = require("[filename.json]");
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://visitor-recognition.firebaseio.com"
+  databaseURL: "[firebase_url]"
 });
 
-var registrationToken = "c3Oa8wiX7nI:APA91bGAGIGElxI7iHggTRSDNgknRn806cYieVp0Djz7fBhUpT4TiVreCayoECqaEvK5MOJs004zjEx96AEvcxOSsaGYc2K_VdFPCV3dDDUg1fqkivnkBb9U_1IbMscbSb_KAUIuCU-7";
+var registrationToken = "[registrationToken]";
 
 var payload = {
   "notification" : {
